@@ -2,13 +2,16 @@ package org.zerock.domain.ex01;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
 public class EmployeeDto {
 	private String firstName;
 	private String lastName;
-	private LocalDate birthDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthDate; // yyyy.mm.dd
 	private String photo;
 	private String notes;
 }

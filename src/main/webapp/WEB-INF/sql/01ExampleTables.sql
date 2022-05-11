@@ -21,3 +21,4 @@ SELECT * FROM Customers; -- 91개
 SELECT * FROM Employees; -- 10개
 
 SELECT * FROM Customers ORDER BY CustomerID DESC;
+
