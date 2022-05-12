@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.ex03.Ex03Mapper">
+  <select id="selectCustomerNameById" resultType="string">
+    SELECT CustomerName FROM Customers WHERE CustomerId = #{id}
+  </select>
+  <select id="selectEmployeeFirstNameById" resultType="string">
+  	SELECT FirstName 
+  	FROM Employees 
+  	WHERE EmployeeID = #{id}
+  </select>
+  
+  <select id="selectBoard" resultType="org.zerock.domain.ex02.BoardDto">
+  	SELECT id, title, body, inserted
+  	FROM Board
+  	ORDER BY id
+  </select>
+  
+  <select id="selectBoardBody" resultType="org.zerock.domain.ex02.BoardDto">
+  	SELECT id, title, body, inserted
+  	FROM Board
+  	WHERE id = #{id}
+  </select>
+  
+  <update id="updateBoard">
+  	UPDATE Board 
+  	SET title = #{title},
+  		body = #{body} 
+  	WHERE id = #{id}
+  </update>
+</mapper>
