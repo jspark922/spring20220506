@@ -20,6 +20,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:url value="/ex15/board/write" var="writeLink" />
+	<h1><a href="${writeLink }">글쓰기</a></h1>
+
 	<h1>글 목록</h1>
 
 	<table class="table">
@@ -35,8 +38,11 @@
 				<tr>
 					<td>${board.id }</td>
 					<td>
-						<c:url value="/ex15/board/${board.id }" var="link"></c:url>
+						<c:url value="/ex15/board/${board.id }" var="link" />
 						<a href="${link }"> ${board.title } </a>
+						<c:if test="${board.numOfReply > 0}">
+						[${board.numOfReply }]
+						</c:if>
 					</td>
 					<td>${board.inserted }</td>
 				</tr>

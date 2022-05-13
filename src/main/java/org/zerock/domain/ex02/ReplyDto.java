@@ -5,10 +5,9 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-public class BoardDto {
+public class ReplyDto {
 	private int id;
-	private String title;
-	private String body;
+	private int boardId; // board_id colum과 매칭 , 별칭(alias) 잘 쓸 것
+	private String content;
 	private LocalDateTime inserted;
-	private int numOfReply;
 }

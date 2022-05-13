@@ -13,9 +13,13 @@
   </select>
   
   <select id="selectBoard" resultType="org.zerock.domain.ex02.BoardDto">
-  	SELECT id, title, body, inserted
-  	FROM Board
-  	ORDER BY id
+  	SELECT b.id, 
+  		   b.title, 
+  		   b.inserted, 
+  		   COUNT(r.id) numOfReply
+  	FROM Board b LEFT JOIN Reply r ON b.id = r.board_id
+  	GROUP BY b.id
+  	ORDER BY id DESC
   </select>
   
   <select id="selectBoardBody" resultType="org.zerock.domain.ex02.BoardDto">
@@ -30,4 +34,14 @@
   		body = #{body} 
   	WHERE id = #{id}
   </update>
+  
+  <delete id="deleteBoard">
+  	DELETE FROM Board
+  	WHERE id = #{id}
+  </delete>
+  
+  <insert id="insertBoard" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+  	INSERT INTO Board (title, body, inserted) 
+	VALUES (#{title}, #{body}, #{inserted})
+  </insert>
 </mapper>
