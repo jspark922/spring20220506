@@ -4,6 +4,7 @@ USE mydb5;
 DESC Board;
 DESC Reply;
 
+
 CREATE TABLE Board
 SELECT * FROM mydb4.Board;
 CREATE TABLE Reply
@@ -17,3 +18,7 @@ MODIFY COLUMN id INT PRIMARY KEY AUTO_INCREMENT;
 
 ALTER TABLE Reply
 ADD FOREIGN KEY (board_id) REFERENCES Board(id);
+
+-- 테이블 복사
+INSERT INTO Board (title, body, inserted)
+(SELECT title, body, inserted FROM Board);
